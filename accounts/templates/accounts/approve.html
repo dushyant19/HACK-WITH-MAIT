@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load course %}
+{% block title %}
+
+    Login
+{% endblock %}
+
+{% block content %}
+<section class="text-gray-700 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+    <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Hi there, your username is "{{user.username}}"</h2>
+          <p class="leading-relaxed">Your registration is under process now .Once the verification is done 
+      you can try logging in again . </p>
+         
+      
+     
+    </div>
+</section>
+{% endblock %}
