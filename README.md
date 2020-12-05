@@ -1,4 +1,4 @@
-# Hackccelerate
+# Hack With MAIT
 
 An Online education platfrom for schools 
 Live at https://learn-live.herokuapp.com/
