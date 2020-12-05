@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load cache %}
+
+{% block title %}
+  {{ object.title }}
+{% endblock %}
+
+{% block content %}
+  <h1><a href="{% url "students:student_course_list" %}">
+      Go Back</a> 
+    </h1>
+   <div class="grid grid-cols-8 gap-2">
+    <div class="contents-res md:col-span-2 sm:col-span-8">
+    <h3>Modules for {{course.title}}</h3>
+    <ul id="modules">
+      {% for m in object.modules.all %}
+        <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
+          <a href="{% url "students:student_course_detail_module" object.id m.id %}">
+            <span>
+              Module <span class="order">{{ m.order|add:1 }}</span>
+            </span>
+            <br>
+            {{ m.title }}
+          </a>
+        </li>
+      {% empty %}
+        <li>No modules yet.</li>
+      {% endfor %}
+
+    </ul>    
+    <h3>
+      <a href="{% url "chat:course_chat_room" object.general_chat.id %}">
+        Course chat room
+      </a>
+    </h3>
+  </div>
+  <div class="mod-res md:col-span-4 sm:col-span-8" >
+    {% cache 600 module_contents module %}
+      {% for content in module.contents.all %}
+        {% with item=content.item %}
+          <h2><strong>{{ item.title }} </strong></h2>
+          {{ item.render }}
+        {% endwith %}
+      {% endfor %}
+    {% endcache %}
+
+
+
+
+  </div>
+   <div class="md:col-span-2 sm:col-span-8  p-3 border-gray-400 bg-gray text-white" style="background-color:#333">
+
+    <h2 class="mb-3 text-1xl">Announcements</h2>
+    <hr>
+    {% for a in announcements %}
+    <div class="mb-2 mt-1">
+    <p>{{a.content}}</p>
+    <p class="mb-2"> - {{ a.created }} </p>
+    <hr>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+
+  
+{% endblock %}

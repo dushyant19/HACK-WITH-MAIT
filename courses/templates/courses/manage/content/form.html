@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if object %}
+    Edit content "{{ object.title }}"
+  {% else %}
+    Add new content
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="grid place-items-center mt-5">
+     <div class="max-w-sm rounded overflow-hidden shadow-lg p-4">
+  <h1>
+    {% if object %}
+      Edit content "{{ object.title }}"
+    {% else %}
+      Add new content
+    {% endif %}
+  </h1>
+  <div class="my-module">
+    <h2>Course info</h2>
+    <form method="post" enctype="multipart/form-data">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <p><input type="submit" value="Save content"></p>
+       </div>
+    </form>
+    <div class="block text-center">
+       <a href = "{% url "courses:manage_course_list"%}"> <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">  Go back
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+       
+      
+    </button>
+    </a>
+    </div>
+  </div>
+  </div>
+  </section>
+{% endblock %}

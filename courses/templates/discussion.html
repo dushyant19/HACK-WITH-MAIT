@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+<section class=" text-gray-700 body-font overflow-hidden ">
+    <h1><b>Discussion Forum</b></h1>
+  <div class="container px-5 py-16 mx-auto overflow-scroll max-h-screen ">
+        {% for u in uploads %}
+
+        <div class="py-8 flex flex-wrap md:flex-no-wrap">
+        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+          <span class="tracking-widest font-medium title-font text-gray-900">{{u.user.username}}</span>
+          <span class="mt-1 text-gray-500 text-sm">{{u.created|date:"M d, Y"}}</span>
+        </div>
+        <div class="md:flex-grow">
+          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{u.title}}</h2>
+          <p class="leading-relaxed">{{u.content}}</p>
+          <a class="text-green-500 inline-flex items-center mt-4" href="/media/{{u.file.name}}" target="_blank" >Learn More
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+        {% endfor %}
+      
+     
+      
+    </div>
+  </div>
+</section>
+
+<section class="text-gray-700 body-font relative">
+  <div class="container px-5 py-24 mx-auto">
+  <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Upload Content</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
+    </div>
+    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-1/2"> 
+          <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-green-500 text-base px-4 py-2" placeholder="Title" type="text"  name="title">
+        </div>
+        <div class="p-2 w-1/2">
+          <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-green-500 text-base px-4 py-2" placeholder="Email" type="file" name="file">
+        </div>
+        <div class="p-2 w-full">
+          <textarea class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-48 focus:border-green-500 text-base px-4 py-2 resize-none block" placeholder="Message" name="description"></textarea>
+        </div>
+        <div class="p-2 w-full">
+          <button class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg" type='submit'>Upload</button>
+        </div>
+    </form>
+        
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
