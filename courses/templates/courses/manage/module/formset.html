@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load course %}
+{% block title %}
+  Edit "{{ course.title }}"
+{% endblock %}
+
+{% block content %}
+  <h1>Edit "{{ course.title }}"</h1>
+
+  <!-- <div class="mt-5">
+   
+    <h2>Course modules</h2>
+    <form method="post">
+      {{ formset }}
+      {{ formset.management_form }}
+      {% csrf_token %}
+      <input type="submit" value="Save modules">
+    </form>
+  
+</div> -->
+ <div class="mt-5">
+ <div class="block ml-4 ">
+       <a href = "{% url "courses:manage_course_list"%}"> <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">  Go back
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg> </button></a>
+    
+  <form method="post">
+    <section class="text-gray-700 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      
+    
+        {{ formset.management_form }}
+        
+        <div class="flex flex-wrap -m-4">
+          {% for form in formset %}
+          <div class="p-4 lg:w-1/3">
+          <div class="h-full bg-gray-200 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+            
+            {{form}}
+        </div>
+        </div>
+        
+        {% endfor %}
+        <button type="submit" value="Save modules" class="mb-3 bg-green-400 hover:bg-blue-700 text-white font-bold py-2 px-5 border border-blue-700 rounded mt-5">Save Modules</button> 
+    </div>
+  </section>
+       <!-- <table>
+      {{ formset }}
+      </table>  -->
+      {% csrf_token %}
+  </form>
+</div>
+</div>
+    
+{% endblock %}
+
+
+
+
+
+
+
+<section class="text-gray-700 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap -m-4">
+      
+     
+      <div class="p-4 lg:w-1/3">
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

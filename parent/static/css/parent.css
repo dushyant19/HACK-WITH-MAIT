@@ -1,0 +1,49 @@
+.scroll {
+  max-height: 220px;
+  overflow-y: auto;
+}
+.navbar {
+  margin-bottom: 15px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  padding: 0 10px 0 10px;
+}
+
+.navbar .navbar-brand img {
+  width: 40px;
+  height: 40px;
+}
+.nav-link {
+  color: #48bb78 !important;
+}
+body {
+  background-image: url("/static/images/undraw_happy_news_hxmt.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "Source Sans Pro", sans-serif;
+}
+.card-header {
+  background-color: #ffffff;
+  color: #48bb78;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+}
+.card {
+  margin-left: 29px;
+}
+.row {
+  justify-content: space-around;
+  margin-bottom: 120px;
+}
+.list-group {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+}
+#logout {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+}
+.navbar-toggler {
+  border: none;
+}

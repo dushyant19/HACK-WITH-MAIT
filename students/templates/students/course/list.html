@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}My courses{% endblock %}
+
+{% block content %}
+  {% comment %} <h1>My courses</h1> {% endcomment %}
+  <section class="text-gray-700 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h2 class="text-xs text-green-500 tracking-widest font-medium title-font mb-1">You are studing in Standard {{request.user.student.standard}}</h2>
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Hi {{request.user}}, Your Enrolled Courses are listed Below!</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base"> Follow your dreams, believe in yourself and don’t give up. – <i>Rachel Corrie </i> </p>
+    </div>
+
+    <div class="flex flex-wrap">
+      {% for course in object_list %}
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200">
+          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">{{course.title}}</h2>
+          <p class="leading-relaxed text-base mb-2">{{course.overview}}</p>
+          <p class="leading-relaxed text-base mb-2"><i>Subject</i>: {{course.subject.title}}</p>
+          <p class="leading-relaxed text-base mb-2"><i>Teacher</i>: {{course.owner.username}}</p>
+          <a class="text-green-500 inline-flex items-center" href="{% url "students:student_course_detail" course.id %}">Continue Studying
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      {% empty %}
+      <p>
+        You are not enrolled in any courses yet.
+        <a class="text-green-500 inline-flex items-center" href="{% url "students:course_list" %}">Browse courses
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        to enroll in a course.
+      </p>
+    {% endfor %}
+    </div>
+    <!-- <button class="flex mx-auto mt-16 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Button</button> -->
+  </div>
+</section>
+
+{% endblock %}
